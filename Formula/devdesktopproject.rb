@@ -6,8 +6,8 @@ class Devdesktopproject < Formula
 
   def install
     system "hdiutil", "attach", cached_download
-    system "cp", "-r", "/Volumes/Human-Agement 1.0.0-arm64/Human.Agement.app", prefix
-    system "hdiutil", "detach", "/Volumes/Human-Agement 1.0.0-arm64"
+    system "cp", "-r", "/Volumes/Human'Agement 1.0.0-arm64/Human.Agement.app", prefix
+    system "hdiutil", "detach", "/Volumes/Human'Agement 1.0.0-arm64"
   end
 
   def caveats
