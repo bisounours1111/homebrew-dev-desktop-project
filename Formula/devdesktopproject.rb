@@ -7,8 +7,8 @@ class Devdesktopproject < Formula
 
   def install
     system "hdiutil", "attach", cached_download
-    ohai "Contenu du volume :"
-    system "ls", "-la", "/Volumes/Human-Agement"
+    ohai "Volumes montés :"
+    system "ls", "-la", "/Volumes"
     ohai "Tentative de copie..."
     system "cp", "-r", "/Volumes/Human-Agement/Human-Agement.app", prefix
     system "hdiutil", "detach", "/Volumes/Human-Agement"
