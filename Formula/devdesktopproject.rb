@@ -7,15 +7,15 @@ class Devdesktopproject < Formula
 
   def install
     system "hdiutil", "attach", cached_download
-    system "cp", "-r", "/Volumes/Human-Agement/DevDesktopProject.app", prefix
+    system "cp", "-r", "/Volumes/Human-Agement/Human-Agement.app", prefix
     system "hdiutil", "detach", "/Volumes/Human-Agement"
   end
 
   def caveats
     <<~EOS
-      DevDesktopProject est installé dans #{prefix}/DevDesktopProject.app.
+      Human-Agement est installé dans #{prefix}/Human-Agement.app.
       Tu peux lancer l'application avec :
-        open #{prefix}/DevDesktopProject.app
+        open #{prefix}/Human-Agement.app
     EOS
   end
 end
