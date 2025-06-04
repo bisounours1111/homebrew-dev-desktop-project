@@ -5,9 +5,17 @@ class Devdesktopproject < Formula
   sha256 "5032da418849b99de7ffa197c1065536551a7bdb95982c974b882ff9c13c88da"
 
   def install
+    # Démontage forcé si le volume est déjà monté
+    system "hdiutil", "detach", "/Volumes/Human.Agement 1.0.0-arm64", "-force", "-quiet" rescue nil
+    
+    # Montage du DMG
     system "hdiutil", "attach", "-nobrowse", cached_download
+    
+    # Installation de l'application
     system "cp", "-r", "/Volumes/Human.Agement 1.0.0-arm64/Human.Agement.app", prefix
-    system "hdiutil", "detach", "/Volumes/Human.Agement 1.0.0-arm64"
+    
+    # Démontage du DMG
+    system "hdiutil", "detach", "/Volumes/Human.Agement 1.0.0-arm64", "-quiet"
   end
 
   def caveats
