@@ -5,9 +5,9 @@ class Devdesktopproject < Formula
   sha256 "5032da418849b99de7ffa197c1065536551a7bdb95982c974b882ff9c13c88da"
 
   def install
-    system "hdiutil", "attach", cached_download
-    system "cp", "-r", "/Volumes/Human'Agement 1.0.0-arm64/Human.Agement.app", prefix
-    system "hdiutil", "detach", "/Volumes/Human'Agement 1.0.0-arm64"
+    system "hdiutil", "attach", "-nobrowse", cached_download
+    system "cp", "-r", "/Volumes/Human.Agement 1.0.0-arm64/Human.Agement.app", prefix
+    system "hdiutil", "detach", "/Volumes/Human.Agement 1.0.0-arm64"
   end
 
   def caveats
