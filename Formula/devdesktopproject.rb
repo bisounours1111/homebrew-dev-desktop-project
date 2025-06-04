@@ -1,18 +1,14 @@
 class Devdesktopproject < Formula
   desc "Mon projet Electron + Vite + React"
   homepage "https://github.com/bisounours1111/dev-desktop-project"
-  url "https://github.com/bisounours1111/dev-desktop-project/releases/download/v1/Human.Agement-1.0.0-arm64.dmg"
-  sha256 "5032da418849b99de7ffa197c1065536551a7bdb95982c974b882ff9c13c88da"
+  url "https://github.com/bisounours1111/dev-desktop-project/releases/download/v1/Human-Agement.dmg"
+  sha256 "b90815f644c8dab3066f7f085349c8b1c4163e098b1a9074ddfa666c06b8b854"
 
   def install
     system "hdiutil", "attach", cached_download
-    # Échappement correct pour le chemin avec apostrophe
-    system "cp", "-r", "/Volumes/Human'Agement/DevDesktopProject.app", prefix
-    system "hdiutil", "detach", "/Volumes/Human'Agement"
+    system "cp", "-r", "/Volumes/Human-Agement/DevDesktopProject.app", prefix
+    system "hdiutil", "detach", "/Volumes/Human-Agement"
   end
-  
-  
-  
 
   def caveats
     <<~EOS
