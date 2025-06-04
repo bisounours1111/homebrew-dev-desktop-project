@@ -1,4 +1,4 @@
-class DevDesktopProject < Formula
+class Devdesktopproject < Formula
     desc "Mon projet Electron + Vite + React"
     homepage "https://github.com/bisounours1111/dev-desktop-project"
     url "https://github.com/bisounours1111/dev-desktop-project/releases/download/v1/DevDesktopProject-1.0.0.dmg"
