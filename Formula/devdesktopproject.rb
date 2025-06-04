@@ -6,12 +6,12 @@ class Devdesktopproject < Formula
   sha256 "64a92a50d61f528030743a3a7f6e4b4c8f331d277bcd61089e69a29fdce2a215"
 
   def install
-    system "hdiutil", "attach", cached_download
-    ohai "Volumes montés :"
-    system "ls", "-la", "/Volumes"
+    volume = `hdiutil attach -nobrowse #{cached_download} | grep "/Volumes/" | cut -f 3-`.strip
+    ohai "Volume monté : #{volume}"
+    system "ls", "-la", volume
     ohai "Tentative de copie..."
-    system "cp", "-r", "/Volumes/Human-Agement/Human-Agement.app", prefix
-    system "hdiutil", "detach", "/Volumes/Human-Agement"
+    system "cp", "-r", "#{volume}/Human-Agement.app", prefix
+    system "hdiutil", "detach", volume
   end
 
   def caveats
