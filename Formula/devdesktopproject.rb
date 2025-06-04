@@ -6,9 +6,16 @@ class Devdesktopproject < Formula
 
   def install
     system "hdiutil", "attach", cached_download
-    system "cp", "-r", "/Volumes/Human.Agement/DevDesktopProject.app", prefix
-    system "hdiutil", "detach", "/Volumes/Human.Agement"
+  
+    # Liste les volumes montés pour debug
+    system "ls", "/Volumes"
+  
+    # Ensuite copie le bon chemin (à adapter selon le nom exact du volume)
+    system "cp", "-r", "/Volumes/<NomDuVolume>/DevDesktopProject.app", prefix
+  
+    system "hdiutil", "detach", "/Volumes/<NomDuVolume>"
   end
+  
 
   def caveats
     <<~EOS
