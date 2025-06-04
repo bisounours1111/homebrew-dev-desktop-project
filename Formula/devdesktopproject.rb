@@ -5,16 +5,11 @@ class Devdesktopproject < Formula
   sha256 "5032da418849b99de7ffa197c1065536551a7bdb95982c974b882ff9c13c88da"
 
   def install
-    system "hdiutil", "attach", cached_download
-  
-    # Liste les volumes montés pour debug
-    system "ls", "/Volumes"
-  
-    # Ensuite copie le bon chemin (à adapter selon le nom exact du volume)
-    system "cp", "-r", "/Volumes/<NomDuVolume>/DevDesktopProject.app", prefix
-  
-    system "hdiutil", "detach", "/Volumes/<NomDuVolume>"
+    mount_point = `hdiutil attach #{cached_download} | grep '/Volumes/' | awk '{print $3}'`.strip
+    system "cp", "-r", "#{mount_point}/DevDesktopProject.app", prefix
+    system "hdiutil", "detach", mount_point
   end
+  
   
 
   def caveats
