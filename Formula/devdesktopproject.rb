@@ -6,11 +6,21 @@ class Devdesktopproject < Formula
   sha256 "64a92a50d61f528030743a3a7f6e4b4c8f331d277bcd61089e69a29fdce2a215"
 
   def install
+    # Démontage forcé si le DMG est déjà monté
+    system "hdiutil", "detach", "/Volumes/Human-Agement", "-force" rescue nil
+    
+    # Montage du DMG
     volume = `hdiutil attach -nobrowse #{cached_download} | grep "/Volumes/" | cut -f 3-`.strip
     ohai "Volume monté : #{volume}"
+    
+    # Vérification du contenu
     system "ls", "-la", volume
     ohai "Tentative de copie..."
+    
+    # Copie de l'application
     system "cp", "-r", "#{volume}/Human-Agement.app", prefix
+    
+    # Démontage propre
     system "hdiutil", "detach", volume
   end
 
