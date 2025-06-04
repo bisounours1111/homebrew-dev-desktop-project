@@ -5,10 +5,12 @@ class Devdesktopproject < Formula
   sha256 "5032da418849b99de7ffa197c1065536551a7bdb95982c974b882ff9c13c88da"
 
   def install
-    mount_point = `hdiutil attach #{cached_download} | grep '/Volumes/' | awk '{print $3}'`.strip
-    system "cp", "-r", "#{mount_point}/DevDesktopProject.app", prefix
-    system "hdiutil", "detach", mount_point
+    system "hdiutil", "attach", cached_download
+    # Échappement correct pour le chemin avec apostrophe
+    system "cp", "-r", "/Volumes/Human'Agement/DevDesktopProject.app", prefix
+    system "hdiutil", "detach", "/Volumes/Human'Agement"
   end
+  
   
   
 
